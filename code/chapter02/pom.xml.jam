@@ -1,0 +1,13 @@
+{@import ../pom.jim}
+{project |pom|
+    {GAV :{GROUPID}:chapter02:{VERSION}}
+    {name|chapter02}
+    {description|project and code for chapter 01}
+	{parent :loombook-parent}
+    {modules samples}
+    {@include ../plugins.jim}
+        {dependencies#
+            {#for MODULE in (api,engine)=
+                {dependency|org.junit.jupiter|junit-jupiter-MODULE}}
+        }
+}

@@ -1,0 +1,13 @@
+{@import ../../pom.jim}
+{project |jar|
+    {GAV :{GROUPID}:snippets:{VERSION}}
+    {name|Snippets}
+    {description|Simple test snippet for the Loom Book}
+	{parent :loombook-parent}
+    {@include ../../plugins.jim}
+        {dependencies#
+            {#for MODULE in (api,engine)=
+                {dependency|org.junit.jupiter|junit-jupiter-MODULE}}
+             {dependency :{GROUPID}:test-support:{VERSION}}
+        }
+}

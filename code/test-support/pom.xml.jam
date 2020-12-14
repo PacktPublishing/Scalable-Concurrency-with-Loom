@@ -1,0 +1,12 @@
+{@import ../pom.jim}
+{project |jar|
+    {GAV :{GROUPID}:test-support:{VERSION}}
+    {name|Test Support Classes}
+    {description|Simple sample classes for the first chapter of the book}
+	{parent :loombook-parent}
+    {@include ../plugins.jim}
+    {dependencies#
+        {#for MODULE in (api,engine)=
+            {dependency|org.junit.jupiter|junit-jupiter-MODULE}}
+    }
+}
