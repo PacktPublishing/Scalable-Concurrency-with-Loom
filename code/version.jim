@@ -1,0 +1,12 @@
+This file defines the version of the project. This is more effective than defining the project
+version in a maven property because that cannot be used to reference the parent.
+
+-- the project groupId. It has to start with com. and a registered domain name or else it cannot get into maven central
+{@define GROUPID=com.javax0.loombook}
+
+{@define VERSION=1.1.0-SNAPSHOT}
+{@define JAVA_RELEASE=16}
+{@define JAVA_SOURCE=16}
+{@define JAVA_TARGET=16}
+{@define MAVEN_COMPILER_PLUGIN_VERSION=3.8.1}
+{@define MAVEN_JAVADOC_PLUGIN_VERSION=3.2.0}

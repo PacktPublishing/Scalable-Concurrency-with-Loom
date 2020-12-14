@@ -1,0 +1,54 @@
+{@options lenient}
+{@import pom.jim}
+{project |pom|
+    {GAV :{GROUPID}:loombook-parent:{VERSION}}
+    {name/loombook-parent}
+    {description/loombook parent POM}
+    {modules {#for $i in (01,02,03,04,05,06,07,08,09,10,11)=chapter$i,}test-support}
+    {developer|Peter Verhas|peter@verhas.com}
+    {github|verhas|loombook}
+    {properties|
+        {property :project.build.sourceEncoding:UTF-8}
+    }
+    {build|
+        {pluginManagement|
+            {plugins|
+                {plugin|
+                    {GAV :org.apache.maven.plugins:maven-source-plugin:3.0.1}
+                    {executions|
+                        {execution|
+                            {id|attach-sources}
+                            {goals|{goal|jar}}
+                        }
+                    }
+                }
+                {plugin|
+                    {GAV :org.apache.maven.plugins:maven-javadoc-plugin:{MAVEN_JAVADOC_PLUGIN_VERSION}}
+                    {configuration|
+                        {source|8}
+                        {detectJavaApiLink|false}
+                    }
+                    {executions|{execution|
+                            {id|attach-javadocs}
+                            {goals|{goal|jar}}}}
+                }
+                {plugin|
+                    {GAV :org.apache.maven.plugins:maven-compiler-plugin:{MAVEN_COMPILER_PLUGIN_VERSION}}
+                    <configuration>
+                        <source>{JAVA_SOURCE}</source>
+                        <target>{JAVA_TARGET}</target>
+                        <release>{JAVA_RELEASE}</release>
+                    </configuration>
+                }
+
+                {plugin|
+                    {GAV :org.apache.maven.plugins:maven-surefire-plugin:3.0.0-M4}
+                }
+            }
+        }
+    }
+    {dependencyManagement|{dependencies|
+        {@for MODULE in (api,engine,params)={dependency :org.junit.jupiter:junit-jupiter-MODULE:5.2.0:test}}
+        {dependency :{GROUPID}:test-support:{VERSION}}
+        }}
+}

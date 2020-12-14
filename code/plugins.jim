@@ -1,0 +1,3 @@
+{build|{plugins|
+        {plugin|{GAV :org.apache.maven.plugins:maven-surefire-plugin:}}
+}}
